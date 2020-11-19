@@ -21,7 +21,7 @@ class Remaker
   	content = File.read("index.html")
   	File.open("pet.html", "w") do |file|
   		content.gsub! "[name]" , name
-  		content.gsub! "[status]" , status.join("<br>")
+  		content.gsub! "[status]" , status
   		file.puts content
   	end
   end
