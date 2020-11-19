@@ -17,10 +17,9 @@ class Remaker
     return template
   end
 
-   def html_for_pet(name, status)
+   def html_for_pet(status)
   	content = File.read("index.html")
   	File.open("pet.html", "w") do |file|
-  		content.gsub! "[name]" , name
   		content.gsub! "[status]" , status
   		file.puts content
   	end
