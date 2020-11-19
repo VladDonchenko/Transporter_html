@@ -1,27 +1,33 @@
-module MyGem 
-class Example
-	attr_accessor :text
-	def initializate
-		@text = text
-	end
+class Remaker
 
-	def get(param)
-		text = param
-	end
+  def create_new_file(newfile = "index.html")
+    file = File.new("#{filename}", "w")
+    file.puts "<!DOCTYPE html>"
+    file.puts "<html>"
+    file.puts "<head>"
+    file.puts "  <title>My HTML</title>"
+    file.puts "</head>"
+    file.puts "<body>"
+    file.puts "<p>[text]</p>"
+    file.puts "</body>"
+    file.puts "</html>"
+    file.close
 
-	def trans(text)
-		File.open("index.html","w") do |file|
-			file.puts "<!DOCTYPE html>"
-			file.puts "<html>"
-			file.puts "	<head>"
-			file.puts "	 <title>#555</title>"
-			file.puts " </head>"
-			file.puts " <body>"
-			file.puts "	#{text}"
-			file.puts "	</boby>"
-			file.puts "</html>"
-		end
-	end
-end
+    template = File.read("#{filename}")
+    return template
+  end
+
+   def html_for_pet(name, state, help)
+  	content = File.read("index.html")
+  	File.open("pet.html", "w") do |file|
+  		emoji = state[-1]
+  		state.delete_at(-1)
+  		content.gsub! "[name]" , name
+  		content.gsub! "[state]" , state.join("<br>")
+  		content.gsub! "[emoji]" , emoji
+  		content.gsub! "[help]" , help
+  		file.puts content
+  	end
+  end
 end
 
