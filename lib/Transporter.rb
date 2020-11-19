@@ -17,7 +17,7 @@ class Remaker
     return template
   end
 
-   def html_for_pet(name, state, help)
+   def html_for_pet(name, state)
   	content = File.read("index.html")
   	File.open("pet.html", "w") do |file|
   		emoji = state[-1]
@@ -25,7 +25,6 @@ class Remaker
   		content.gsub! "[name]" , name
   		content.gsub! "[state]" , state.join("<br>")
   		content.gsub! "[emoji]" , emoji
-  		content.gsub! "[help]" , help
   		file.puts content
   	end
   end
