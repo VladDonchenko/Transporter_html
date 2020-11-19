@@ -17,12 +17,24 @@ class Remaker
     return template
   end
 
-   def html_for_pet(status)
+
+  def html_for_pet(status)
   	content = File.read("index.html")
   	File.open("pet.html", "w") do |file|
   		content.gsub! "[status]" , status
   		file.puts content
   	end
+  end
+
+  def page_creator(text, bypass_html:false)
+    text_templ = create_new_file
+    if bypass_html == false
+      text.gsub! /[<>]/ , " "
+    end
+    File.open("new_file" , "w") do |file|
+      text_templ.gsub! "[text]" , [text]
+      file.puts text_templ
+    end
   end
 end
 
