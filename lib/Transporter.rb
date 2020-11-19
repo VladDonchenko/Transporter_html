@@ -20,8 +20,6 @@ class Remaker
    def html_for_pet(name, status)
   	content = File.read("index.html")
   	File.open("pet.html", "w") do |file|
-  		emoji = state[-1]
-  		state.delete_at(-1)
   		content.gsub! "[name]" , name
   		content.gsub! "[status]" , status.join("<br>")
   		file.puts content
