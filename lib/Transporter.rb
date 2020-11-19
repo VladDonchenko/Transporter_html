@@ -1,7 +1,7 @@
 class Remaker
 
   def create_new_file(newfile = "index.html")
-    file = File.new("#{filename}", "w")
+    file = File.new("#{newfile}", "w")
     file.puts "<!DOCTYPE html>"
     file.puts "<html>"
     file.puts "<head>"
@@ -13,7 +13,7 @@ class Remaker
     file.puts "</html>"
     file.close
 
-    template = File.read("#{filename}")
+    template = File.read("#{newfile}")
     return template
   end
 
@@ -32,7 +32,7 @@ class Remaker
       text.gsub! /[<>]/ , " "
     end
     File.open("new_file" , "w") do |file|
-      text_templ.gsub! "[text]" , [text]
+      text_templ.gsub! "[text]" , text
       file.puts text_templ
     end
   end

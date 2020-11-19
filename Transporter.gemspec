@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'Transporter'
-  s.version     = '0.1.6'
+  s.version     = '0.1.9'
   s.date        = '2020-11-19'
   s.summary     = "*******"
   s.description = "*******"
